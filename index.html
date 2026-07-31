@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rajon Ashby</title>
+<meta name="description" content="Rajon Ashby — junior at Manchester High School, Spanish Immersion. Bilingual liaison, FBLA, business & marketing.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0f1216;
+    --surface:#161b21;
+    --surface-2:#1c2229;
+    --line:#262d35;
+    --ink:#ece9e2;
+    --ink-dim:#9aa1a9;
+    --ink-faint:#5c636b;
+    --gold:#d4af37;
+    --gold-bright:#f0cb63;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none;}
+  ::selection{background:var(--gold);color:#0f1216;}
+
+  .wrap{max-width:840px;margin:0 auto;padding:0 28px;}
+  .hero.wrap{max-width:1080px;}
+
+  /* nav */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(15,18,22,.86);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  nav.wrap{display:flex;align-items:center;justify-content:space-between;height:64px;}
+  .logo{font-family:'Fraunces',serif;font-weight:600;font-size:1.05rem;letter-spacing:.02em;}
+  .logo span{color:var(--gold);}
+  .navlinks{display:flex;gap:28px;font-size:.8rem;letter-spacing:.08em;color:var(--ink-dim);}
+  .navlinks a{transition:color .15s ease;text-transform:uppercase;padding-bottom:6px;border-bottom:2px solid transparent;}
+  .navlinks a:hover{color:var(--ink);}
+  .navlinks a.active{color:var(--ink);border-bottom-color:var(--gold);}
+  .navlinks a:focus-visible, a:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:2px;}
+  .navlinks .loc{color:var(--ink-faint);}
+
+  /* hero */
+  .hero{padding:88px 0 96px;position:relative;overflow:hidden;}
+  .hero::before{
+    content:"";position:absolute;top:-120px;left:-80px;
+    width:640px;height:640px;border-radius:50%;
+    background:radial-gradient(circle, rgba(212,175,55,.22) 0%, rgba(212,175,55,.08) 45%, transparent 72%);
+    pointer-events:none;z-index:0;
+  }
+  .hero-grid{display:grid;grid-template-columns:1fr 340px;align-items:center;gap:24px;position:relative;z-index:1;}
+  .hero-copy{min-width:0;}
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:1rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--gold);margin-bottom:26px;display:flex;align-items:center;gap:14px;
+    font-weight:500;
+  }
+  .eyebrow::before{content:"";width:30px;height:2px;background:var(--gold);display:inline-block;}
+  h1{
+    font-family:'Fraunces',serif;
+    font-weight:500;
+    font-size:clamp(4.2rem,11vw,8rem);
+    line-height:.92;
+    letter-spacing:-.015em;
+    position:relative;
+  }
+  h1 .period{color:var(--gold);}
+  h1 .dots{
+    display:inline-block;position:relative;width:.5em;height:.5em;vertical-align:baseline;
+  }
+  h1 .dots i{
+    position:absolute;border-radius:50%;
+  }
+  h1 .dots .dot-fill{width:.22em;height:.22em;background:var(--gold);left:0;bottom:0;}
+  h1 .dots .dot-ring{width:.3em;height:.3em;border:1.5px solid var(--gold);left:.24em;bottom:.16em;}
+  .tagline{
+    margin-top:28px;
+    font-family:'Fraunces',serif;
+    font-style:italic;
+    transform:skewX(-9deg);
+    display:inline-block;
+    font-size:1.3rem;
+    color:var(--ink-dim);
+    max-width:34ch;
+    font-weight:400;
+  }
+  .cta-row{display:flex;gap:14px;margin-top:36px;flex-wrap:wrap;}
+  .btn{
+    font-size:.82rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+    padding:16px 26px;transition:all .18s ease;border:1px solid transparent;
+  }
+  .btn-primary{background:var(--gold);color:#15130a;}
+  .btn-primary:hover{background:var(--gold-bright);}
+  .btn-ghost{border-color:var(--line);color:var(--ink);}
+  .btn-ghost:hover{border-color:var(--gold);color:var(--gold-bright);}
+  .avatar{
+    width:340px;height:340px;border-radius:50%;
+    padding:6px;border:1.5px solid var(--gold);
+    justify-self:center;
+  }
+  .avatar img{
+    width:100%;height:100%;border-radius:50%;
+    object-fit:cover;display:block;
+  }
+
+  /* section shell */
+  section{padding:64px 0;border-top:1px solid var(--line);}
+  .sec-head{margin-bottom:40px;}
+  .sec-head h2{
+    font-family:'Fraunces',serif;font-weight:500;font-size:1.7rem;
+  }
+  .sec-head .es-cap{
+    font-family:'IBM Plex Mono',monospace;font-size:.68rem;letter-spacing:.12em;
+    text-transform:uppercase;color:var(--gold);margin-top:6px;
+  }
+  .sec-head .gold-bar{
+    width:48px;height:3px;background:var(--gold);margin-top:14px;border-radius:2px;
+  }
+
+  /* about */
+  .about-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;}
+  .about-item .label{font-family:'IBM Plex Mono',monospace;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:8px;}
+  .about-item .val{font-size:1rem;}
+  .about-item .val small{display:block;color:var(--ink-dim);font-size:.85rem;margin-top:2px;}
+
+  /* experience */
+  .xp{
+    display:grid;grid-template-columns:112px 1fr;gap:24px;
+    padding:26px 0;border-bottom:1px solid var(--line);
+  }
+  .xp:last-child{border-bottom:none;}
+  .xp-when{font-family:'IBM Plex Mono',monospace;font-size:.74rem;color:var(--gold);padding-top:4px;line-height:1.6;}
+  .xp-role h3{font-family:'Fraunces',serif;font-weight:500;font-size:1.18rem;transition:color .18s ease;}
+  .xp:hover .xp-role h3{color:var(--gold-bright);}
+  .xp-role .role-title{color:var(--ink-dim);font-size:.88rem;margin-top:2px;margin-bottom:12px;}
+  .xp-role p.lede{color:var(--ink);font-size:.94rem;margin-bottom:12px;}
+  .xp-role ul{list-style:none;}
+  .xp-role li{
+    position:relative;padding-left:16px;margin-bottom:7px;
+    color:var(--ink-dim);font-size:.9rem;line-height:1.55;
+  }
+  .xp-role li::before{content:"—";position:absolute;left:0;color:var(--gold);}
+
+  /* education */
+  .edu-item{padding:22px 0;border-bottom:1px solid var(--line);}
+  .edu-item:last-child{border-bottom:none;}
+  .edu-item .top{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;}
+  .edu-item h3{font-family:'Fraunces',serif;font-weight:500;font-size:1.1rem;}
+  .edu-item .yrs{font-family:'IBM Plex Mono',monospace;font-size:.74rem;color:var(--gold);white-space:nowrap;}
+  .edu-item .meta{color:var(--ink-dim);font-size:.88rem;margin-top:6px;}
+
+  /* awards */
+  .award-list li{
+    list-style:none;padding:12px 0;border-bottom:1px solid var(--line);font-size:.9rem;color:var(--ink-dim);
+  }
+  .award-list li:last-child{border-bottom:none;}
+  .award-list li strong{color:var(--ink);font-weight:500;display:block;font-size:.92rem;margin-bottom:2px;}
+
+  /* contact */
+  .contact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .contact-card{
+    border:1px solid var(--line);padding:22px;border-radius:2px;transition:border-color .18s ease;
+  }
+  .contact-card:hover{border-color:var(--gold);}
+  .contact-card .label{font-family:'IBM Plex Mono',monospace;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:10px;}
+  .contact-card .value{font-size:.98rem;color:var(--ink);}
+  .contact-card .arrow{color:var(--gold);margin-left:6px;}
+
+  footer{
+    padding:36px 0 56px;
+    color:var(--ink-faint);font-size:.8rem;
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;
+  }
+
+  @media (max-width:640px){
+    .navlinks{display:none;}
+    .about-grid{grid-template-columns:1fr;gap:20px;}
+    .xp{grid-template-columns:1fr;gap:8px;}
+    .contact-grid{grid-template-columns:1fr;}
+    .hero-grid{grid-template-columns:1fr;gap:36px;}
+    .avatar{width:200px;height:200px;justify-self:center;}
+    .hero::before{width:420px;height:420px;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{transition:none !important;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <a href="#top" class="logo">R<span>·</span>A</a>
+    <div class="navlinks">
+      <a href="#about" class="active">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#education">Education</a>
+      <a href="#contact">Contact</a>
+      <span class="loc">Richmond, VA</span>
+    </div>
+  </nav>
+</header>
+
+<div id="top" class="wrap hero">
+  <div class="hero-grid">
+    <div class="hero-copy">
+      <div class="eyebrow">Richmond, Virginia</div>
+      <h1>Rajon<br>Ashby<span class="period">.</span><span class="dots"><i class="dot-fill"></i><i class="dot-ring"></i></span></h1>
+      <p class="tagline">
+        Business Administration &amp; International Relations.
+      </p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="mailto:rajonashby@gmail.com">Get in touch</a>
+        <a class="btn btn-ghost" href="https://www.linkedin.com/in/rajonashby/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+    <div class="avatar"><img src="profile.jpg" alt="Rajon Ashby"></div>
+  </div>
+</div>
+
+<section id="about">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>About</h2>
+      <div class="es-cap">Sobre mí</div>
+    </div>
+    <div class="about-grid">
+      <div class="about-item">
+        <div class="label">School</div>
+        <div class="val">Manchester High School<small>Chesterfield County, VA</small></div>
+      </div>
+      <div class="about-item">
+        <div class="label">Based</div>
+        <div class="val">Richmond, Virginia</div>
+      </div>
+      <div class="about-item">
+        <div class="label">Focus</div>
+        <div class="val">Business Admin. &amp; International Relations</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Experience</h2>
+      <div class="es-cap">Experiencia</div>
+      <div class="gold-bar"></div>
+    </div>
+
+    <div class="xp">
+      <div class="xp-when">2025 · 2026</div>
+      <div class="xp-role">
+        <h3>RizzeUp Resources Inc.</h3>
+        <div class="role-title">Administrative Assistant / Bilingual Specialist</div>
+        <p class="lede">Supporting a nonprofit's outreach and Spanish-speaking community access.</p>
+        <ul>
+          <li>Run social media marketing, digital outreach, and Instagram content strategy</li>
+          <li>Provide English–Spanish interpretation and translation for families accessing programs</li>
+          <li>Support volunteer coordination and operational workflows</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="xp">
+      <div class="xp-when">2025 · NOW</div>
+      <div class="xp-role">
+        <h3>Future Business Leaders of America</h3>
+        <div class="role-title">Competitive Member</div>
+        <p class="lede">Competing in Public Administration &amp; Management.</p>
+        <ul>
+          <li>2nd place, FBLA Regional Competition — Public Administration &amp; Management</li>
+          <li>Studied business finance, government ethics, and corporate finance</li>
+          <li>Built leadership and collaboration skills through team-based projects</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="xp">
+      <div class="xp-when">2024 · 2025</div>
+      <div class="xp-role">
+        <h3>RISE Manchester</h3>
+        <div class="role-title">Team Lead, School-Based Enterprise</div>
+        <p class="lede">Running a student-run business end to end.</p>
+        <ul>
+          <li>Oversaw task delegation, scheduling, inventory, and customer service</li>
+          <li>Collaborated with staff and students to improve workflow and productivity</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="xp">
+      <div class="xp-when">2024 · 2028</div>
+      <div class="xp-role">
+        <h3>Spanish Immersion Specialty Center</h3>
+        <div class="role-title">Student, Bilingual Studies</div>
+        <p class="lede">A competitive program in advanced Spanish and cultural immersion.</p>
+        <ul>
+          <li>Progressing toward bilingual proficiency for academic and real-world contexts</li>
+          <li>A1 for Listening and Speaking (AAPPL Exam)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Education</h2>
+      <div class="es-cap">Educación</div>
+    </div>
+
+    <div class="edu-item">
+      <div class="top">
+        <h3>Manchester High School</h3>
+        <span class="yrs">2024 · 2028</span>
+      </div>
+      <div class="meta">Advanced Diploma · Spanish Biliteracy Concentration · FBLA (Future Business Leaders of America) · Spanish Honors Society</div>
+    </div>
+
+    <div class="edu-item">
+      <div class="top">
+        <h3>Chesterfield Virtual School</h3>
+        <span class="yrs">2023 · 2024</span>
+      </div>
+      <div class="meta">Student of the Year · All-A Honor Roll</div>
+    </div>
+  </div>
+</section>
+
+<section id="awards">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Awards</h2>
+      <div class="es-cap">Premios</div>
+    </div>
+    <ul class="award-list">
+      <li><strong>CTE Student of the Year</strong>Principles of Business &amp; Marketing, 2025</li>
+      <li><strong>2nd Place, FBLA Regionals</strong>Public Administration &amp; Management, 2026</li>
+      <li><strong>WISE Financial Literacy</strong>Certification</li>
+    </ul>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Contact</h2>
+      <div class="es-cap">Contacto</div>
+    </div>
+    <div class="contact-grid">
+      <a class="contact-card" href="mailto:rajonashby@gmail.com">
+        <div class="label">Email</div>
+        <div class="value">rajonashby@gmail.com<span class="arrow">→</span></div>
+      </a>
+      <a class="contact-card" href="tel:8043197543">
+        <div class="label">Phone</div>
+        <div class="value">(804) 319-7543<span class="arrow">→</span></div>
+      </a>
+      <a class="contact-card" href="https://www.linkedin.com/in/rajonashby/" target="_blank" rel="noopener">
+        <div class="label">LinkedIn</div>
+        <div class="value">/in/rajonashby<span class="arrow">→</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer class="wrap">
+  <span>© 2026 RAJON ASHBY</span>
+  <span>RICHMOND, VA</span>
+</footer>
+
+</body>
+</html>
